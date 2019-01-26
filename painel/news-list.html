@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Painel Administrativo - Login</title>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">   
+                  
+        <link rel="stylesheet" href="../css/estilo.css">
+        
+    </head>
+    <body>
+        
+        <header></header>
+        
+        <div ng-controller="newsListController">  
+
+            <div class="container"> 
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <h3> Notícias </h3>
+                    </div>
+                    <div class="col-md-2" style="padding-top: 13px;">
+                        <a class="btn btn-md btn-primary" href="news-create.html"> Cadastrar notícia</a>
+                    </div>
+                </div>
+               <hr>
+
+               <div ng-repeat="new in news">
+                    <div class="news-card"> 
+                        <div class="row">
+                            <div class="col-md-9"><strong>{{new.title}}</strong></div>
+                            <div class="col-md-2 text-right news-date">
+                                {{new.date | date : "dd/MM/yy HH:mm:ss"}}
+                            </div>
+                            <div class="col-md-1 text-right">
+                                <button class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-search" aria-hidden="true" ng-click="viewNews(new.id)"></span></button>
+                                <button class="btn btn-xs btn-default"> <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="editNews(new.id)"></span></button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-12 news-date" ng-show="new.tags"><i>Tags: {{new.tags}}</i></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">{{new.subtitle}}</div>
+                        </div>
+                    </div>                  
+               </div>
+
+               <nav aria-label="Page navigation" class="text-center">
+                  <ul class="pagination">
+                    <li ng-class="{'disabled':currentPage === 1}">
+                      <a href="#" aria-label="Previous" ng-click="goPreviousPage()" >
+                        <span aria-hidden="true">&larr;</span> Anterior</a>
+                      </a>
+                    </li>        
+                    <li>
+                        <a>
+                        Página: {{currentPage}} de {{totalPages}}
+                        </a>
+                    </li>            
+                    <li ng-class="{'disabled':currentPage === totalPages}">
+                      <a href="#" aria-label="Next" ng-click="goNextPage()">
+                        Próxima <span aria-hidden="true">&rarr;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+           </div>
+
+        </div>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.6/angular-sanitize.min.js"></script>       
+        <script src="../js/app.module.js"></script>
+        <script src="../js/news-list.controller.js"></script>
+        <script src="../js/header.component.js"></script>
+    </body>
+</html>

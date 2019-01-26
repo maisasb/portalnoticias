@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Painel Administrativo - Cadastro</title>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="../css/estilo.css">
+        
+    </head>
+    <body>
+        
+        <header></header>
+       
+        <div ng-controller="newsCreateController">  
+
+            <div class="container"> 
+
+              <ol class="breadcrumb">
+                <li><a href="./dashboard.html" target="_self">DASHBOARD</a></li>
+                <li><a href="./news-list.html" target="_self">Notícias</a></li>
+                <li class="active">{{screenName}}</li>
+              </ol>
+
+               <h3> {{screenName}} de notícia </h3>
+               <hr>
+
+               <div class="alert alert-success" role="alert" ng-show="message.success">{{message.success}}</div>
+               <div class="alert alert-danger" role="alert" ng-show="message.error">{{message.error}}</div>
+               
+              <!-- form cadastro -->
+              <div class="container">
+                  <form ng-submit="processaFormCadastro()" class="form-cadastro">
+
+                      
+                      
+                      <div class="row mbottom">
+                          <div class="form-group">
+                            <label for="title">Título*</label>
+                            <input type="text" class="form-control" id="title" ng-model="news.title" required>
+                          </div>
+                      </div>
+                      <div class="row mbottom">
+                          <div class="form-group">
+                            <label for="subtitle">Subtítulo*</label>
+                            <input type="text" class="form-control" id="subtitle" ng-model="news.subtitle" required>
+                          </div>
+                      </div>
+                      <div class="row mbottom">
+                          <div class="form-group">
+                            <label for="text">Texto*</label>
+                            <textarea type="text" class="form-control" id="text" ng-model="news.text" required></textarea>
+                          </div>
+                      </div>
+                      <div class="row mbottom">
+                          <div class="form-group">
+                            <label for="tags">Tags (separado por vírgulas)</label>
+                            <input type="text" class="form-control" id="tags" ng-model="news.tags">
+                          </div>
+                      </div>
+                           
+                      <div class="row mbottom">
+                          <div class="col-xs-12 text-right">
+                              <button class="btn btn-danger cadastrar" type="submit" ng-show="news.id == -1">
+                                  Cadastrar
+                              </button>
+                               <button class="btn btn-success" type="submit" ng-show="news.id != -1">
+                                  Alterar
+                              </button>
+                          </div>
+                      </div>
+                      
+                  </form>
+              </div>
+
+           </div>
+
+        </div>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.6/angular-sanitize.min.js"></script>         
+        <script src="../js/app.module.js"></script>
+        <script src="../js/news-create.controller.js"></script>
+        <script src="../js/header.component.js"></script>
+    </body>
+</html>

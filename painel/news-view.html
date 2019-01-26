@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>Painel Administrativo - Cadastro</title>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="../css/estilo.css">
+        
+    </head>
+    <body>
+        
+        <header></header>
+       
+        <div ng-controller="newsCreateController">  
+
+            <div class="container"> 
+
+              <ol class="breadcrumb">
+                <li><a href="./dashboard.html" target="_self">DASHBOARD</a></li>
+                <li><a href="./news-list.html" target="_self">Notícias</a></li>
+                <li class="active">{{news.title}}</li>
+              </ol>
+
+               <div class="alert alert-danger" role="alert" ng-show="message.error">Erro ao carregar notícia</div>
+
+               <h3> {{news.title}} </h3>
+               <hr>
+               <div class="news-date pull-right">{{news.date | date : "dd/MM/yy HH:mm:ss"}}</div>
+               <div class="news-date"><i>Tags: {{news.tags}}</i></div>
+               <div><i>{{news.subtitle}}</i>  </div>
+               <div><p ng-bind-html="news.text"></p></div>
+      
+
+           </div>
+
+        </div>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.6/angular-sanitize.min.js"></script>   
+        <script src="../js/app.module.js"></script>
+        <script src="../js/news-view.controller.js"></script>
+        <script src="../js/header.component.js"></script>
+    </body>
+</html>
